@@ -1,6 +1,6 @@
 <%= form_for @item, remote: true do |f| %>
   <%= f.text_field :name, :placeholder => "Name?", :autocomplete => "off" %>
-  <%= f.text_field :description, :placeholder => "What do you want?", :autocomplete => "off" %>
+  <%= f.text_field :description, :placeholder => "What do you want?", class: 'item-autocomplete' %>
   <%= f.hidden_field :order_id, :value => @order.id %>
   <%= f.submit "Add it to the order!", :class => "button", data: { disable_with: "Creating order..." } %>
 <% end %>

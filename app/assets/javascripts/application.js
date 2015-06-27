@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+//= require underscore
 //= require jquery.countdown/dist/jquery.countdown.js
+//= require select2
+//= require turbolinks
 //= require_tree .
