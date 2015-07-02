@@ -1,4 +1,5 @@
 $(".order-items").append("<%= escape_javascript(render @item) %>");
 $('#new_item').find("input[type=text], textarea").val("");
+$('.item-autocomplete').select2('val','');
 $('.order-items .item').first().addClass("note-pulse");
 $('#item_name').focus();
