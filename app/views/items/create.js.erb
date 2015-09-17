@@ -1,4 +1,6 @@
 $(".order-items").append("<%= escape_javascript(render @item) %>");
+$('.order-total').html("Total: <%= '%.2f' % @item.order.total %> € <em>(<%= '%.2f' % @item.order.price_per_person %> € pp)</em>");
+
 $('#new_item').find("input[type=text], textarea").val("");
 $('.item-autocomplete').select2('val','');
 $('.order-items .item').first().addClass("note-pulse");

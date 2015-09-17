@@ -4,11 +4,21 @@
 
 .item-autocomplete {
   width: 100%;
-  .select2-choice {
-    height: 2.5em;
-    padding: .5em;
-    .select2-arrow {
-      padding-top: .4em;
-    }
+}
+
+.select2-container .select2-selection--single {
+  // padding: 8px 11px;
+  height: 42px;
+  #select2-item_description-container {
+    padding: 8px 11px;
   }
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+}
+
+.item-price {
+  float: right;
+  font-weight: bold;
 }

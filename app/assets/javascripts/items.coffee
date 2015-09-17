@@ -8,9 +8,8 @@ format = (item) ->
   formattedRes
 
 $(document).ready () ->
-  if $('.item-autocomplete').length
-    $('.item-autocomplete').select2
-      data: []
+  if $('#item_description').length
+    $('#item_description').select2
       ajax:
         url: 'http://orostube-microservice.herokuapp.com/menu'
         type: 'GET'
@@ -18,10 +17,23 @@ $(document).ready () ->
         quietMillis: 250
         data: (term) ->
           q: term
-        results: (data) ->
+        processResults: (data) ->
           formattedData = _.map data, (group) ->
-            { text: group.name, children: _.map(group.items, (item) -> { id: item.name, text: "#{item.name} (#{item.price.toFixed(2)} €)", ingredients: item.ingredients })}
+            { text: group.name, children: _.map(group.items, (item) -> { id: item.name, text: "#{item.name} (#{item.price.toFixed(2)} €)", ingredients: item.ingredients, price: item.price.toFixed(2) })}
           { results: formattedData }
-      formatResult: format
-      formatSelection: format
+      templateResult: format
+      templateSelection: (item) ->
+        "<strong>#{item.text}</strong>"
       escapeMarkup: (m) -> m
+    $('#item_description').on 'select2:select', (e) ->
+      $('#item_price').val e.params.data.price
+
+  if $('button#add_lunchtronic').length
+    $('button#add_lunchtronic').on 'click', (e) ->
+      e.preventDefault()
+      $.post '/items.js',
+        item:
+          name: $('#item_name').val()
+          description: 'Lunchtronic'
+          price: -6.0
+          order_id: $('#item_order_id').val()

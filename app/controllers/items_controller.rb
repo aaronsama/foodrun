@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(
       :name,
       :description,
+      :price,
       :order_id
     )
   end

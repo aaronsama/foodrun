@@ -12,6 +12,14 @@ class Order < ActiveRecord::Base
     self.expires_on < DateTime.now
   end
 
+  def total
+    items.map(&:price).reduce :+
+  end
+
+  def price_per_person
+    total / (items.select(:name).uniq.count)
+  end
+
   private
 
   def generate_expires_on
