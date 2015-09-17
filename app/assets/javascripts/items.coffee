@@ -15,8 +15,8 @@ $(document).ready () ->
         type: 'GET'
         dataType: 'json'
         quietMillis: 250
-        data: (term) ->
-          q: term
+        data: (params) ->
+          q: params.term
         processResults: (data) ->
           formattedData = _.map data, (group) ->
             { text: group.name, children: _.map(group.items, (item) -> { id: item.name, text: "#{item.name} (#{item.price.toFixed(2)} €)", ingredients: item.ingredients, price: item.price.toFixed(2) })}
