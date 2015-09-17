@@ -15,7 +15,11 @@
 </ul>
 
 <p class="order-items-header order-total">
-  Total: <%= '%.2f' % @order.total %> € <em>(<%= '%.2f' % @order.price_per_person %> € pp)</em>
+  <% if @order.items.any? %>
+    Total: <%= '%.2f' % @order.total %> € <em>(<%= '%.2f' % @order.price_per_person %> € pp)</em>
+  <% else %>
+    Add some items to see the total
+  <% end %>
 </p>
 
 <footer class="footer">
